@@ -26,7 +26,6 @@
     
     [self setUpLanguageModel];
     [self setUpSpeechRecognition];
-
 }
 
 - (void)setUpLanguageModel {
@@ -55,6 +54,28 @@
     
     self.openEarsEventsObserver = [[OEEventsObserver alloc] init];
     [self.openEarsEventsObserver setDelegate:self];
+}
+
+-(void)captureEventWith:(NSString *)eventType and:(NSString *)timestamp and:(NSString *)story {
+    NSString *post = [NSString stringWithFormat:@"event_type=%@&occurred_at=%@&story=%@",eventType, timestamp, story];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://fli-change.herokuapp.com/api/events"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSURLSessionDataTask *sessionDataTask = [[NSURLSession alloc] dataTaskWithRequest:request];
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)sessionDataTask.response;
+    
+    if(httpResponse.statusCode) {
+        NSLog(@"Connection Successful");
+    } else {
+        NSLog(@"Connection could not be made");
+    }
 }
 
 - (void)didReceiveMemoryWarning {
