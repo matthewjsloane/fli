@@ -79,6 +79,16 @@
     }
 }
 
+-(NSString*)getCurrentTimestamp {
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setDateFormat:@"dd/MM/YY HH:mm"];
+    NSString *currentTime = [dateFormatter stringFromDate:today];
+    
+    return currentTime;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
