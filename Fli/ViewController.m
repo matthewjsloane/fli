@@ -21,6 +21,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    self.lmPath = nil;
+    self.dicPath = nil;
+    
+    [self setUpLanguageModel];
+    [self setUpSpeechRecognition];
+
+}
+
+- (void)setUpLanguageModel {
     OELanguageModelGenerator *lmGenerator = [[OELanguageModelGenerator alloc] init];
     
     NSString *separation = @"\n";
@@ -30,20 +39,19 @@
     NSString *name = @"Model";
     NSError *err = [lmGenerator generateLanguageModelFromArray:words withFilesNamed:name forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to create a Spanish language model instead of an English one.
     
-    NSString *lmPath = nil;
-    NSString *dicPath = nil;
-    
     if(err == nil) {
         
-        lmPath = [lmGenerator pathToSuccessfullyGeneratedLanguageModelWithRequestedName:@"Model"];
-        dicPath = [lmGenerator pathToSuccessfullyGeneratedDictionaryWithRequestedName:@"Model"];
+        self.lmPath = [lmGenerator pathToSuccessfullyGeneratedLanguageModelWithRequestedName:@"Model"];
+        self.dicPath = [lmGenerator pathToSuccessfullyGeneratedDictionaryWithRequestedName:@"Model"];
         
     } else {
         NSLog(@"Error: %@",[err localizedDescription]);
     }
-    
+}
+
+- (void)setUpSpeechRecognition {
     [[OEPocketsphinxController sharedInstance] setActive:TRUE error:nil];
-    [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to perform Spanish recognition instead of English.
+    [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.lmPath dictionaryAtPath:self.dicPath acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to perform Spanish recognition instead of English.
     
     self.openEarsEventsObserver = [[OEEventsObserver alloc] init];
     [self.openEarsEventsObserver setDelegate:self];

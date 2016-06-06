@@ -12,6 +12,8 @@
 @interface ViewController : UIViewController <OEEventsObserverDelegate>
 
 @property OEEventsObserver *openEarsEventsObserver;
+@property NSString *lmPath;
+@property NSString *dicPath;
 
 @end
 
