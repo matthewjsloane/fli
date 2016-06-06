@@ -51,6 +51,7 @@
 - (void)setUpSpeechRecognition {
     [[OEPocketsphinxController sharedInstance] setActive:TRUE error:nil];
     [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.lmPath dictionaryAtPath:self.dicPath acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to perform Spanish recognition instead of English.
+    [[OEPocketsphinxController sharedInstance] setVadThreshold:3.0];
     
     self.openEarsEventsObserver = [[OEEventsObserver alloc] init];
     [self.openEarsEventsObserver setDelegate:self];
