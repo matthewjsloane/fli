@@ -20,6 +20,7 @@
 		34F06DDA1D052FA000DA5AA1 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F06DD71D052FA000DA5AA1 /* Slt.framework */; };
 		34F06DDC1D0533F300DA5AA1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F06DDB1D0533F300DA5AA1 /* AudioToolbox.framework */; };
 		34F06DDE1D0533FC00DA5AA1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F06DDD1D0533FC00DA5AA1 /* AVFoundation.framework */; };
+		34F06DE01D054FBD00DA5AA1 /* language.txt in Resources */ = {isa = PBXBuildFile; fileRef = 34F06DDF1D054FBD00DA5AA1 /* language.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		34F06DD71D052FA000DA5AA1 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
 		34F06DDB1D0533F300DA5AA1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		34F06DDD1D0533FC00DA5AA1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		34F06DDF1D054FBD00DA5AA1 /* language.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = language.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				34F06DA51D052AF500DA5AA1 /* AppDelegate.m */,
 				34F06DA71D052AF500DA5AA1 /* ViewController.h */,
 				34F06DA81D052AF500DA5AA1 /* ViewController.m */,
+				34F06DDF1D054FBD00DA5AA1 /* language.txt */,
 				34F06DAA1D052AF500DA5AA1 /* Main.storyboard */,
 				34F06DAD1D052AF500DA5AA1 /* Assets.xcassets */,
 				34F06DAF1D052AF500DA5AA1 /* LaunchScreen.storyboard */,
@@ -272,6 +275,7 @@
 			files = (
 				34F06DB11D052AF500DA5AA1 /* LaunchScreen.storyboard in Resources */,
 				34F06DD81D052FA000DA5AA1 /* AcousticModelEnglish.bundle in Resources */,
+				34F06DE01D054FBD00DA5AA1 /* language.txt in Resources */,
 				34F06DAE1D052AF500DA5AA1 /* Assets.xcassets in Resources */,
 				34F06DAC1D052AF500DA5AA1 /* Main.storyboard in Resources */,
 			);

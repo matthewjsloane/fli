@@ -23,7 +23,10 @@
     
     OELanguageModelGenerator *lmGenerator = [[OELanguageModelGenerator alloc] init];
     
-    NSArray *words = [NSArray arrayWithObjects:@"Sarah", @"vain glory", @"want to", @"play", nil];
+    NSString *separation = @"\n";
+    NSString *fileText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"language" ofType:@"txt"] encoding:NSMacOSRomanStringEncoding error:nil];
+    NSArray *words = [[NSArray alloc]initWithArray:[fileText componentsSeparatedByString:separation]];
+    
     NSString *name = @"Model";
     NSError *err = [lmGenerator generateLanguageModelFromArray:words withFilesNamed:name forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to create a Spanish language model instead of an English one.
     
